@@ -2,26 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply transition-colors duration-300;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.dark {
+  @apply bg-gray-900 text-white;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInFromTop {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slideInFromTop {
+  animation: slideInFromTop 0.5s ease-out;
+}
+
+/* Estilo para el scrollbar en navegadores webkit (Chrome, Safari, etc.) */
+/* Cambia el color del scrollbar */
+::-webkit-scrollbar {
+  width: 10px; /* Ancho del scrollbar */
+}
+
+/* Cambia el color del fondo del scrollbar */
+::-webkit-scrollbar-track {
+  background: #1a1a1a; /* Color del fondo */
+}
+
+/* Cambia el color del thumb (la parte deslizable del scrollbar) */
+::-webkit-scrollbar-thumb {
+  background: #ffffff;
+  border-radius: 5px;
+
+}
+
+/* Cambia el color del thumb cuando se desplaza */
+::-webkit-scrollbar-thumb:hover {
+  background: #cccccc; /* Color del thumb al pasar el mouse */
 }
